@@ -1,0 +1,33 @@
+﻿@model PrintPdf.Models.PrinterModel
+@{
+    ViewData["Title"] = "Print";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <form method="post" enctype="multipart/form-data" asp-controller="Home" asp-action="Print">
+        <table>
+            <tr>
+                <td>Printer Name: </td>
+                <td><select asp-for="PrinterName" asp-items="@(new SelectList(ViewBag.printerName,"PrinterName","PrinterName"))"></select></td>
+            </tr>
+            <tr>
+                <td>PDF File: </td>
+                <td><input type="file" id="postedFile" name="postedFile" /></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Submit" /></td>
+            </tr>
+        </table>
+        <hr />
+        @ViewBag.Name
+    </form>
+</body>
+</html>
